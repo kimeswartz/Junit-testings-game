@@ -8,6 +8,7 @@ import se.reky.hakan.model.Player;
 import se.reky.hakan.service.PlayerService;
 
 import java.util.Scanner;
+
 /*
 	Denna klass innehåller main-metoden som startar applikationen.
 	Detta är en spring-boot-applikation och innehåller två delar:
@@ -26,44 +27,45 @@ import java.util.Scanner;
 @SpringBootApplication
 public class ProjektuppgiftApplication {
 
-	public static void main(String[] args) {
-		//Här startar själva Spring-applikationen
-		SpringApplication.run(ProjektuppgiftApplication.class, args);
-	}
-	//Här startar tråden med själva spelet
-	@Bean
-	public CommandLineRunner run(Game game) {
-		return args -> new Thread(game::start).start();
-	}
-	@Bean
-	public Game game(Scanner scanner, PlayerService playerService,
-					 GameStateManager gameStateManager,
-					 IOHandler ioHandler, PlayerInteraction playerInteraction) {
-		return new Game(ioHandler, gameStateManager,playerInteraction,
-				playerService);
-	}
+    public static void main(String[] args) {
+        //Här startar själva Spring-applikationen
+        SpringApplication.run(ProjektuppgiftApplication.class, args);
+    }
 
-	@Bean
-	public Scanner scanner() {
-		return new Scanner(System.in);
-	}
+    //Här startar tråden med själva spelet
+    @Bean
+    public CommandLineRunner run(Game game) {
+        return args -> new Thread(game::start).start();
+    }
 
-	@Bean
-	public GameStateManager gameStateManager(Scanner scanner, IOHandler ioHandler){
-		return new SimpleGameStateManager(ioHandler);
-	}
-	@Bean
-	public IOHandler ioHandler(Scanner scanner){
-		return new IOHandler(scanner);
+    @Bean
+    public Game game(Scanner scanner, PlayerService playerService,
+                     GameStateManager gameStateManager,
+                     IOHandler ioHandler, PlayerInteraction playerInteraction) {
+        return new Game(ioHandler, gameStateManager, playerInteraction,
+                playerService);
+    }
 
-	}
-	@Bean
-	public PlayerInteraction playerInteraction(IOHandler ioHandler){
-		return new SimplePlayerInteraction(ioHandler);
-	}
+    @Bean
+    public Scanner scanner() {
+        return new Scanner(System.in);
+    }
 
+    @Bean
+    public GameStateManager gameStateManager(Scanner scanner, IOHandler ioHandler) {
+        return new SimpleGameStateManager(ioHandler);
+    }
 
+    @Bean
+    public IOHandler ioHandler(Scanner scanner) {
+        return new IOHandler(scanner);
 
+    }
+
+    @Bean
+    public PlayerInteraction playerInteraction(IOHandler ioHandler) {
+        return new SimplePlayerInteraction(ioHandler);
+    }
 
 
 }
