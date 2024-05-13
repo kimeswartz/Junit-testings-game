@@ -10,16 +10,21 @@ import java.util.Scanner;
 
 class PlayerInteractionTest {
 
+    // Metod för att skapa en instans av SimplePlayerInteraction med en scanner som innehåller spelarens namn
     private SimplePlayerInteraction createPlayerInteraction(String playerName) {
+        // Skapa en inputstream med spelarens namn som byteArray.
         InputStream inputStream = new ByteArrayInputStream(playerName.getBytes());
+        // Skapa en scanner för att läsa från inputstream.
         Scanner scanner = new Scanner(inputStream);
+        // Skapa en IOHandler med den skapade scannern
         IOHandler ioHandler = new IOHandler(scanner);
+        // Returnera en instans av SimplePlayerInteraction med IOHandler
         return new SimplePlayerInteraction(ioHandler);
     }
 
     @Test
     void testSetupPlayer() {
-        //Vi definerar spelarens namn
+        // Definerar spelarens namn
         String playerName = "testPlayer";
 
         // Skapar en instans av SimplePlayerInteraction med en scanner innehållande spelarens namn
