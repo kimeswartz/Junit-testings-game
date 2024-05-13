@@ -2,9 +2,7 @@ package se.reky.hakan;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
-import se.reky.hakan.IOHandler;
 
-import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 
 class IOHandlerTest {
