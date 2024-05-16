@@ -9,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
 
-
 // Implementerar Lifecycle.PER_CLASS för att dela state mellan olika klasser
 @Disabled
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)

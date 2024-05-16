@@ -12,7 +12,7 @@ class PlayerInteractionTest {
 
     // Metod för att skapa en instans av SimplePlayerInteraction med en scanner som innehåller spelarens namn
     private SimplePlayerInteraction createPlayerInteraction(String playerName) {
-        // Skapa en inputstream med spelarens namn som byteArray.
+        // Skapa en inputstream med spelarens namn som byteArray för simulera en användares input
         InputStream inputStream = new ByteArrayInputStream(playerName.getBytes());
         // Skapa en scanner för att läsa från inputstream.
         Scanner scanner = new Scanner(inputStream);
@@ -49,7 +49,7 @@ class PlayerInteractionTest {
         Player player = new Player();
         player.setHp(10);
 
-        // Kalla på uådatePlayerHealth() metoden med ett positivt och negativt värde
+        // Kalla på updatePlayerHealth() metoden med ett positivt och negativt värde
         playerInteraction.updatePlayerHealth(player, 5);
         playerInteraction.updatePlayerHealth(player, -3);
 
